@@ -1,18 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import SkillsMarquee from './components/SkillsMarquee';
 import Journal from './components/Journal';
 import CareerPlan from './components/CareerPlan';
 import Certificates from './components/Certificates';
 import CVSection from './components/CVSection';
+import Contact from './components/Contact';
 
 function App() {
   const [data, setData] = useState({ journal: [], careerPlan: [], certificates: [] });
   const [loading, setLoading] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    // In a real MERN app, this would fetch from the Express backend
-    // Since we are mocking it for the portfolio preview without running a backend:
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scroll = `${totalScroll / windowHeight}`;
+      setScrollProgress(scroll * 100);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
     const mockData = {
       journal: [
         {
@@ -22,7 +35,7 @@ function App() {
         },
         {
           title: 'Project Management & Collaboration',
-          content: 'Understood agile methodologies, the role of a project manager, and how to effectively track and deliver milestones in complex software projects like Aegis Life.',
+          content: 'Understood agile methodologies, the role of a project manager, and how to effectively track and deliver milestones in complex software projects like Aegis Life/Gaja Saviya.',
           date: '2026-04-15T10:00:00.000Z'
         }
       ],
@@ -45,7 +58,6 @@ function App() {
       ]
     };
 
-    // Simulate network delay
     setTimeout(() => {
       setData(mockData);
       setLoading(false);
@@ -62,14 +74,19 @@ function App() {
 
   return (
     <>
+      {/* Scroll Progress Bar */}
+      <div style={{ position: 'fixed', top: 0, left: 0, height: '4px', background: 'var(--gradient-text)', width: `${scrollProgress}%`, zIndex: 9999, transition: 'width 0.1s ease-out' }}></div>
+      
       <div className="bg-glow"></div>
       <Navbar />
       <main>
         <Hero />
+        <SkillsMarquee />
         <Journal entries={data.journal} />
         <CareerPlan plans={data.careerPlan} />
         <Certificates certificates={data.certificates} />
         <CVSection />
+        <Contact />
       </main>
       <footer style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-secondary)' }}>
         <p>© {new Date().getFullYear()} Geeth Lakshan. Built with MERN Stack.</p>

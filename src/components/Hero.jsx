@@ -16,13 +16,21 @@ const Hero = () => {
           <br /><br />
           I am currently leading a final-year research project titled <strong>"Gaja Saviya,"</strong> which focuses on building an integrated AI framework for Human-Elephant Conflict mitigation.
         </p>
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <a href="#cv" className="btn btn-primary">
             View CV <ChevronRight size={18} />
           </a>
           <a href="#contact" className="btn btn-outline">
             Contact Me
           </a>
+          <div style={{ display: 'flex', gap: '1rem', marginLeft: '1rem' }}>
+            <a href="https://www.linkedin.com/in/geeth-lakshan-a075b5297" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)' }} onMouseOver={e => e.target.style.color = 'var(--accent-primary)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="mailto:lakshang614@gmail.com" style={{ color: 'var(--text-secondary)' }} onMouseOver={e => e.target.style.color = 'var(--accent-primary)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          </div>
         </div>
       </div>
       <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }} className="animate-fade-in delay-2">
